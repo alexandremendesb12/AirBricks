@@ -33,7 +33,6 @@ endif
 	git fetch --all
 
 	$(MAKE) rebase-origin
-	# $(MAKE) clean-env
 
 ifeq ($(DETECTED_OS), Linux)
 	sudo apt-get update
@@ -64,3 +63,7 @@ rebase-origin: ## - [Rebase with origin/main if not on main branch]
 	else \
 		echo "Already on main branch, no rebase needed."; \
 	fi
+
+.PHONY: dag-template
+dag-template:
+	. ./.works/generate-dag-template.sh
