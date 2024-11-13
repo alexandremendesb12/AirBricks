@@ -18,7 +18,7 @@ dag_sub_domain=$(prompt "---> sub domain")
 dag_name=$(prompt "---> dag name")
 schedule_interval=$(prompt "---> schedule interval (cron expression)")
 task_name=$(prompt "---> task name")
-write_mode=$(prompt "---> write mode(overwritem, append, etc...)")
+write_mode=$(prompt "---> write mode(overwrite, append, etc...)")
 email_on_failure=$(prompt "---> Email for failure notify(leave blank if none)")
 retry=$(prompt "---> Retry if fail? (y/n)")
 
@@ -39,14 +39,12 @@ src_folder="src/$dag_domain/$dag_sub_domain/$dag_name"
 source_yaml_file="$src_folder/$dag_name.yaml"
 source_python_file="$src_folder/$dag_name.py"
 
-# Criar os diretórios se não existirem
 mkdir -p "$src_folder"
 
 if [ -f "$dag_folder" ]; then
     echo "YAML file already exists: $yaml_file"
     echo "Skipping creation..."
 else
-    # Gerar o arquivo YAML somente se ele não existir
     if [ "$retry" == "y" ]; then
         cat > "$source_yaml_file" <<EOL
 dag_name: $dag_name
@@ -59,15 +57,15 @@ email_on_retry: $email_on_retry
 EOL
     else
         cat > "$source_yaml_file" <<EOL
-domain: $dag_domain
-sub-domain: $dag_sub_domain
-name: $dag_name
-schedule_interval: $schedule_interval
+domain: "$dag_domain"
+sub-domain: "$dag_sub_domain"
+name: "$dag_name"
+schedule_interval: "$schedule_interval"
 retry: false
 tasks:
-  - id: $task_name
-    task: $task_name
-    mode: $write_mode
+  - id: "$task_name"
+    file: "$source_python_file"
+    mode: "$write_mode"
 EOL
     fi
     echo "YAML configuration file created: $yaml_file"
@@ -90,4 +88,3 @@ EOL
 
 echo "Python DAG file created: $source_python_file"
 echo "Contents:"
-cat "$source_python_file"
