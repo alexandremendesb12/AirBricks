@@ -2,7 +2,7 @@
 name = "airbricks"
 version = "0.1.0"
 description = "A modular framework for building scalable Python applications."
-authors = ["Your Name <you@example.com>"]
+authors = ["Alexandre Mendes Bastos <alexandrem.bastos2526@gmail.com"]
 license = "Apache-2.0"
 
 [tool.poetry.dependencies]
