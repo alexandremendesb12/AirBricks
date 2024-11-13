@@ -46,9 +46,12 @@ endif
 		python -m pip install --upgrade pip; \
 		poetry install --no-root; \
 		python -m pip install pre-commit; \
+		python -m pip install commitizen; \
 	)
 	pre-commit clean
 	pre-commit install
+
+
 
 clean-env: ## - [Remove the existing Python virtual environment]
 	@echo "Removing existing virtual environment..."
