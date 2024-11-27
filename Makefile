@@ -12,7 +12,7 @@ endif
 # Detect the current git branch
 ACTUAL_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 
-.PHONY: setup clean-env rebase-origin
+.PHONY: setup clean-env rebase
 setup: ## - [Set up the local development environment with Python venv and project dependencies]
 	@echo "Detected OS: $(DETECTED_OS)"
 	@echo "Current Git Branch: $(ACTUAL_BRANCH)"
@@ -32,7 +32,7 @@ endif
 	@echo "Fetching the latest changes from the remote repository..."
 	git fetch --all
 
-	$(MAKE) rebase-origin
+	$(MAKE) rebase
 
 ifeq ($(DETECTED_OS), Linux)
 	sudo apt-get update
@@ -56,7 +56,7 @@ clean-env: ## - [Remove the existing Python virtual environment]
 	@echo "Removing existing virtual environment..."
 	@if [ -d ".env" ]; then rm -rf .env; fi
 
-rebase-origin: ## - [Rebase with origin/main if not on main branch]
+rebase: ## - [Rebase with origin/main if not on main branch]
 	@if [ "$(ACTUAL_BRANCH)" != "main" ]; then \
 		echo "Rebasing $(ACTUAL_BRANCH) with origin/main..."; \
 		git rebase origin/main; \
