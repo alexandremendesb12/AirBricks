@@ -1,60 +1,55 @@
-AirBricks é uma plataforma de engenharia de dados que integra e processa grandes volumes de dados com a utilização de Apache Airflow e Databricks para garantir automação, escalabilidade e agilidade nos fluxos de dados. Desenvolvido com o objetivo de otimizar e monitorar pipelines de dados em ambientes de nuvem, o projeto foi construído para fornecer soluções eficientes, acessíveis e de fácil integração para análise e processamento de dados em larga escala.
+# Airflow Databricks DAG Generator
 
-🚀 Funcionalidades
-Automação de Pipelines de Dados: Utilizando Apache Airflow, este projeto permite a orquestração de fluxos de trabalho de dados, garantindo a automação de tarefas repetitivas e a orquestração de processos complexos.
+Este repositório visa fornecer uma solução para gerar DAGs (Directed Acyclic Graphs) para o Apache Airflow de forma automática, utilizando parâmetros definidos em um arquivo YAML. O objetivo é permitir que os desenvolvedores criem DAGs para executar notebooks Databricks sem precisar escrever código Airflow manualmente.
 
-Processamento em Larga Escala com Databricks: A integração com Databricks permite o processamento rápido de grandes volumes de dados, utilizando PySpark para otimizar a análise e o processamento de dados distribuídos.
+## Funcionalidades
 
-Visualização Interativa de Dados: Gerar dashboards interativos e relatórios com Power BI para fornecer insights valiosos e apoiar a tomada de decisões.
+* Geração automática de DAGs para o Apache Airflow
+* Utilização de parâmetros definidos em um arquivo YAML para configurar a DAG
+* Suporte a execução de notebooks Databricks
+* Integração com o Databricks para execução de notebooks
 
-Arquitetura em Nuvem com Microsoft Azure: A plataforma é desenvolvida para ser executada no ambiente em nuvem da Microsoft Azure, aproveitando suas ferramentas e escalabilidade para entregar soluções robustas e eficientes.
+## Como Funciona
 
-⚙️ Tecnologias Utilizadas
-Apache Airflow: Orquestração de workflows e automação de pipelines de dados.
-Databricks: Processamento e análise de dados em grande escala utilizando PySpark.
-Power BI: Criação de dashboards e relatórios interativos para análise de dados.
-Python: Linguagem principal para automação e integração de sistemas.
-SQL: Consultas e manipulação de dados em bancos de dados relacionais.
-Microsoft Azure: Plataforma de nuvem para hospedar e integrar todos os componentes do sistema.
-📈 Objetivo do Projeto
-O AirBricks foi desenvolvido para automatizar e otimizar fluxos de dados em ambientes corporativos, com foco na escalabilidade e na redução de tempo de processamento. Ele proporciona uma solução eficiente para empresas que buscam melhorar sua infraestrutura de dados, tornando os processos mais rápidos, eficientes e menos suscetíveis a erros manuais.
+1. O desenvolvedor cria um arquivo YAML com os parâmetros necessários para a DAG, como:
+	* Nome da DAG
+	* Intervalo de agendamento
+	* Nome do notebook Databricks a ser executado
+	* Parâmetros de execução do notebook
+2. O processo de geração de DAGs é executado, utilizando os parâmetros do arquivo YAML para criar a DAG.
+3. A DAG é criada e salva no repositório do Airflow.
+4. O Airflow é configurado para agendar a execução da DAG.
+5. A DAG é executada, executando o notebook Databricks com os parâmetros definidos.
 
-💡 Como Funciona
-Criação de Pipelines de Dados: Utilizando o Apache Airflow, os usuários podem definir tarefas sequenciais que serão executadas automaticamente. Isso inclui tarefas como extração, transformação e carregamento (ETL) de dados.
+## Requisitos
 
-Processamento e Análise de Dados: Uma vez que os dados são extraídos e preparados, o Databricks entra em ação para realizar o processamento em larga escala, utilizando PySpark para processar grandes volumes de dados de forma rápida e eficiente.
+* Python 3.x
+* Apache Airflow
+* Databricks
+* Notebook Databricks
 
-Visualização: Após o processamento, os dados podem ser analisados e visualizados em Power BI, fornecendo relatórios dinâmicos e interativos que permitem que as equipes de negócios tomem decisões baseadas em dados em tempo real.
+## Instalação
 
-🛠️ Instalação
-Para rodar este projeto localmente ou em seu próprio ambiente de nuvem, siga as instruções abaixo:
+1. Clone o repositório.
+2. Instale as dependências necessárias utilizando `pip install -r requirements.txt`.
+3. Configure o Apache Airflow e o Databricks de acordo com as instruções fornecidas.
 
-Pré-requisitos
-Python 3.x: A linguagem principal utilizada no projeto.
-Apache Airflow: Orquestração de tarefas.
-Databricks: Para processamento e análise de dados.
-Microsoft Azure: Para infraestrutura em nuvem.
-Power BI: Para visualização dos dados.
-Passo a Passo de Instalação
-Clone este repositório para sua máquina local:
+## Uso
 
-git clone https://github.com/alexandremendesb12/AirBricks.git
-Instale as dependências necessárias:
+1. Crie um arquivo YAML com os parâmetros necessários para a DAG.
+2. Execute o processo de geração de DAGs utilizando o comando `make generate-dag`.
+3. Verifique se a DAG foi criada corretamente no repositório do Airflow.
+4. Configure o Airflow para agendar a execução da DAG.
 
-pip install -r requirements.txt
-Configure as variáveis de ambiente e credenciais necessárias para a conexão com o Databricks e Azure.
+## Exemplos
 
-Inicie os pipelines de dados no Apache Airflow.
+* [Exemplo de arquivo YAML](example.yaml)
+* [Exemplo de DAG gerada](example_dag.py)
 
-Crie e visualize os dashboards no Power BI utilizando os dados processados.
+## Contribuições
 
-👨‍💻 Contribuindo
-Contribuições são bem-vindas! Se você tiver uma ideia para melhorar o projeto ou encontrar um bug, por favor, abra uma issue ou envie um pull request. Siga o fluxo de trabalho abaixo:
+Contribuições são bem-vindas! Se você tiver alguma ideia para melhorar o repositório, por favor, abra uma issue ou envie um pull request.
 
-Faça um fork deste repositório.
-Crie uma branch para a sua feature ou correção de bug.
-Envie suas alterações.
-Abra uma pull request com uma descrição clara do que foi alterado.
+## Licença
 
-📚 Licença
-Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para mais detalhes.
+Este repositório é licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
